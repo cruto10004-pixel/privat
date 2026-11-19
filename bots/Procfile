@@ -1,0 +1,2 @@
+auth_bot: python auth_bot.py
+admin_bot: python admin_bot.py
