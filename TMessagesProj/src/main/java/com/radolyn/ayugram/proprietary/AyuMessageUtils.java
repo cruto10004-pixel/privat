@@ -1,45 +1,50 @@
-/*
- * Stub implementation of AyuMessageUtils for open-source build.
- * The actual implementation is proprietary and not included in this repo.
- *
- * Copyright @Radolyn, 2023
- */
 package com.radolyn.ayugram.proprietary;
 
-import com.radolyn.ayugram.database.entities.DeletedMessage;
-import com.radolyn.ayugram.database.entities.EditedMessage;
 import com.radolyn.ayugram.messages.AyuSavePreferences;
+import com.radolyn.ayugram.database.entities.AyuMessageBase;
+import com.radolyn.ayugram.database.entities.EditedMessage;
+import com.radolyn.ayugram.database.entities.DeletedMessage;
 import org.telegram.tgnet.TLRPC;
 
 public class AyuMessageUtils {
 
-    // Called from AyuMessagesController: map(prefs, editedMessage) where editedMessage is EditedMessage
+    public static void map(AyuSavePreferences prefs, AyuMessageBase entity) {
+        // stub
+    }
+
     public static void map(AyuSavePreferences prefs, EditedMessage revision) {
-        // stub — no-op
+        // stub
     }
 
-    // Called from AyuMessagesController: map(prefs, deletedMessage)
     public static void map(AyuSavePreferences prefs, DeletedMessage deletedMessage) {
-        // stub — no-op
+        // stub
     }
 
-    // Called from AyuMessageHistory: map(editedMessage, TL_message, currentAccount)
-    public static void map(EditedMessage editedMessage, TLRPC.TL_message msg, int currentAccount) {
-        // stub — no-op
+    public static void map(EditedMessage editedMessage, TLRPC.Message msg, int currentAccount) {
+        if (msg == null || editedMessage == null) return;
+        editedMessage.messageId = msg.id;
+        editedMessage.text = msg.message;
+        editedMessage.date = msg.edit_date != 0 ? msg.edit_date : msg.date;
+        if (msg.peer_id != null) {
+            editedMessage.peerId = msg.peer_id.channel_id != 0 ? msg.peer_id.channel_id
+                    : msg.peer_id.chat_id != 0 ? msg.peer_id.chat_id
+                    : msg.peer_id.user_id;
+        }
     }
 
-    // Called from AyuMessagesController: mapMedia(prefs, revision, copyMedia)
+    public static void mapMedia(AyuSavePreferences prefs, AyuMessageBase entity, boolean copyFile) {
+        // stub
+    }
+
     public static void mapMedia(AyuSavePreferences prefs, EditedMessage revision, boolean copyMedia) {
-        // stub — no-op
+        // stub
     }
 
-    // Called from AyuMessagesController: mapMedia(prefs, deletedMessage, true)
     public static void mapMedia(AyuSavePreferences prefs, DeletedMessage deletedMessage, boolean copyMedia) {
-        // stub — no-op
+        // stub
     }
 
-    // Called from AyuMessageHistory: mapMedia(editedMessage, TL_message)
-    public static void mapMedia(EditedMessage editedMessage, TLRPC.TL_message msg) {
-        // stub — no-op
+    public static void mapMedia(EditedMessage editedMessage, TLRPC.Message msg) {
+        // stub
     }
 }
