@@ -4,16 +4,15 @@
  */
 package com.exteragram.messenger.boost.encryption;
 
-import android.util.SparseIntArray;
 import org.telegram.messenger.MessageObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class EncryptionHelper {
 
-    public static final List<String> names = new ArrayList<>(Arrays.asList("None"));
+    // Must be ArrayList<String> so PopupUtils.showDialog(ArrayList<? extends CharSequence>, ...) accepts it
+    public static final ArrayList<String> names = new ArrayList<>(Arrays.asList("None"));
 
     private static final BaseEncryptor STUB_ENCRYPTOR = new BaseEncryptor() {
         @Override
