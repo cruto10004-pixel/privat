@@ -100,7 +100,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew assembleAfatRelease
+        run: ./gradlew assembleAfatRelease --no-configuration-cache
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
