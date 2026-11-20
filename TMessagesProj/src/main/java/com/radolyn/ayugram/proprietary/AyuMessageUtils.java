@@ -1,33 +1,42 @@
+/*
+ * Stub implementation of AyuMessageUtils for open-source build.
+ * The actual implementation is proprietary and not included in this repo.
+ *
+ * Copyright @Radolyn, 2023
+ */
 package com.radolyn.ayugram.proprietary;
 
-import com.radolyn.ayugram.AyuSavePreferences;
-import com.radolyn.ayugram.database.entities.AyuMessageBase;
+import com.radolyn.ayugram.database.entities.DeletedMessage;
 import com.radolyn.ayugram.database.entities.EditedMessage;
-import org.telegram.tgnet.TLRPC;
+import com.radolyn.ayugram.messages.AyuSavePreferences;
 
 public class AyuMessageUtils {
 
-    public static void map(AyuSavePreferences prefs, AyuMessageBase entity) {
-        // stub
+    /**
+     * Maps AyuSavePreferences to EditedMessage entity.
+     */
+    public static void map(AyuSavePreferences prefs, EditedMessage revision) {
+        // stub — no-op in open-source build
     }
 
-    public static void map(EditedMessage editedMessage, TLRPC.Message msg, int currentAccount) {
-        if (msg == null || editedMessage == null) return;
-        editedMessage.messageId = msg.id;
-        editedMessage.text = msg.message;
-        editedMessage.date = msg.edit_date != 0 ? msg.edit_date : msg.date;
-        if (msg.peer_id != null) {
-            editedMessage.peerId = msg.peer_id.channel_id != 0 ? msg.peer_id.channel_id
-                    : msg.peer_id.chat_id != 0 ? msg.peer_id.chat_id
-                    : msg.peer_id.user_id;
-        }
+    /**
+     * Maps media data from AyuSavePreferences to EditedMessage entity.
+     */
+    public static void mapMedia(AyuSavePreferences prefs, EditedMessage revision, boolean copyMedia) {
+        // stub — no-op in open-source build
     }
 
-    public static void mapMedia(AyuSavePreferences prefs, AyuMessageBase entity, boolean copyFile) {
-        // stub
+    /**
+     * Maps AyuSavePreferences to DeletedMessage entity.
+     */
+    public static void map(AyuSavePreferences prefs, DeletedMessage deletedMessage) {
+        // stub — no-op in open-source build
     }
 
-    public static void mapMedia(EditedMessage editedMessage, TLRPC.Message msg) {
-        // stub
+    /**
+     * Maps media data from AyuSavePreferences to DeletedMessage entity.
+     */
+    public static void mapMedia(AyuSavePreferences prefs, DeletedMessage deletedMessage, boolean copyMedia) {
+        // stub — no-op in open-source build
     }
 }
