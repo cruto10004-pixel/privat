@@ -32,6 +32,14 @@ public class AyuMessageUtils {
         }
     }
 
+    public static void map(EditedMessage editedMessage, TLRPC.TL_message msg, int currentAccount) {
+        map(editedMessage, (TLRPC.Message) msg, currentAccount);
+    }
+
+    public static void mapMedia(EditedMessage editedMessage, TLRPC.TL_message msg) {
+        // stub
+    }
+
     public static void mapMedia(AyuSavePreferences prefs, AyuMessageBase entity, boolean copyFile) {
         // stub
     }
