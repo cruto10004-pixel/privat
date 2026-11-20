@@ -53,7 +53,7 @@ jobs:
             -dname "CN=Crow, OU=Crow, O=Crow, L=Unknown, S=Unknown, C=US"
 
       - name: Cache Gradle Build
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.gradle/caches/build-cache-*
@@ -90,7 +90,7 @@ jobs:
         run: ./gradlew assembleAfatRelease
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Crow-Messenger-APK
           path: TMessagesProj/build/outputs/apk/afat/release/*.apk
